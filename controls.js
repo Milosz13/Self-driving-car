@@ -1,43 +1,50 @@
 class Controls{
-    constructor(){
-        this.forward = false;
-        this.left = false;
-        this.right = false;
-        this.reverse = false;
+    constructor(type){
+        this.forward=false;
+        this.left=false;
+        this.right=false;
+        this.reverse=false;
 
-        this.#addKeybordListeners();
+        switch(type){
+            case "KEYS":
+                this.#addKeyboardListeners();
+                break;
+            case "IMITATION":
+                this.forward = true;
+                break;
+        }
     }
 
-    #addKeybordListeners(){
-        document.onkeydown = (event) => {
+    #addKeyboardListeners(){
+        document.onkeydown=(event)=>{
             switch(event.key){
                 case "ArrowLeft":
-                    this.left = true;
+                    this.left=true;
                     break;
                 case "ArrowRight":
-                    this.right = true;
+                    this.right=true;
                     break;
                 case "ArrowUp":
-                    this.forward = true;
+                    this.forward=true;
                     break;
                 case "ArrowDown":
-                    this.reverse = true;
+                    this.reverse=true;
                     break;
             }
         }
-        document.onkeyup = (event) => {
+        document.onkeyup=(event)=>{
             switch(event.key){
                 case "ArrowLeft":
-                    this.left = false;
+                    this.left=false;
                     break;
                 case "ArrowRight":
-                    this.right = false;
+                    this.right=false;
                     break;
                 case "ArrowUp":
-                    this.forward = false;
+                    this.forward=false;
                     break;
                 case "ArrowDown":
-                    this.reverse = false;
+                    this.reverse=false;
                     break;
             }
         }
